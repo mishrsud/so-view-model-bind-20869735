@@ -1,0 +1,43 @@
+﻿@using TwoWayBindings.Helpers
+
+@model TwoWayBindings.ViewModels.FilterViewModel
+
+@{
+    ViewBag.Title = "Bindings";
+}
+
+<h2>Bindings</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>FilterViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(false)
+        <div class="form-group">
+            @Html.Label(Html.AliasNameFor(model => model.FilterParameter),
+                Html.DisplayNameFor(model => model.FilterParameter).ToHtmlString(), new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor(Html.AliasNameFor(model => model.FilterParameter))
+                @Html.ValidationMessage(Html.AliasNameFor(model => model.FilterParameter))
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
