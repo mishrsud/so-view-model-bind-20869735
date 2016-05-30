@@ -28,5 +28,10 @@ namespace TwoWayBindings.Controllers
         {
             return View(filter);
         }
+
+        public ActionResult MyApproach(TestViewModel posted)
+        {
+            return View(posted);
+        }
     }
 }

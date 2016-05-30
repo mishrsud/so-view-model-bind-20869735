@@ -1,0 +1,28 @@
+﻿@using TwoWayBindings.Helpers
+@model TwoWayBindings.ViewModels.TestViewModel
+
+@{
+    ViewBag.Title = "MyApproach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MyApproach</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>My Approach View</h4>
+        <hr />
+
+        @Html.Hidden(Html.AliasNameFor(model => model.RequestId), new { @id = Html.AliasIdFor(model => model.RequestId) })
+        @Html.Hidden(Html.AliasNameFor(model => model.SomethingElse), new { @id = Html.AliasIdFor(model => model.SomethingElse), @value = Model.SomethingElse })
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
